@@ -29,9 +29,9 @@ new Vue({
     methods: {
         // Search functionality for both home and results pages
         searchDoctors() {
-            let searchTerm = document.getElementById('searchInput').value.trim();
+            let searchTerm = this.searchTerm.trim(); // Use searchTerm from data
+            console.log(searchTerm);  // Check if the input value is captured
             if (searchTerm) {
-                // Redirect to the results page with the search term in the query parameter
                 window.location.href = `results.html?search=${encodeURIComponent(searchTerm)}`;
             }
         },
@@ -45,3 +45,5 @@ new Vue({
         }
     }
 });
+
+app.mount('#app');

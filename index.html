@@ -7,9 +7,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <script src="medapp.js"type="module" defer></script>
 </head>
 <body>
-    
+    <div id="app">
     <!-- Navigation Bar -->
     <nav class="nav-wrapper blue">
         <div class="container">
@@ -42,22 +43,32 @@
             </div>
         </div>
     </section>
-    <!-- Search bar-->
-     <section>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for doctors..." @keyup.enter="searchDoctors" />
-            <button id="searchButton" @click="searchDoctors">
-                <i class="fas fa-search"></i> <!-- Add FontAwesome icon or any search icon you like -->
-            </button>
-        </div>
-     </section>
+
+   
 
     <!-- Doctor Cards -->
     <section id="doctors" class="section">
-        <div class="container" id="app">
+
+    <!-- Search bar-->
+    <section>
+        <div class="search-container">
+            <h2 class="center-align">Search for Doctors</h2>
+            <input type="text" placeholder="Search for doctors..." v-model="searchTerm">
+            <div class="searched-doctors">
+                <ul>
+                    <li v-for="doctor in filteredDoctors" :key="doctor['Doctor Name']">
+                        
+                        <p>{{ doctor['Doctor Name'] }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-error" v-f="searchTerm&&!filteredDoctors().length">
+                <p>No doctors found.</p>
+            </div>
+        </div>
+    </section>
             <h2 class="center-align">Featured Doctors</h2>
             <div class="row">
-                <!-- Doctor Card -->
                 <div class="doctor-cards-container">
                     <div class="doctor-card" v-for="doctor in featuredDoctors" :key="doctor['Doctor Name']">
                         <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
@@ -85,10 +96,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
-    <!-- Application Script -->
-    <script src="app.js"></script>
 </body>
 </html>
