@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <script src="medapp.js"type="module" defer></script>
+    <script src="app.js"type="module" defer></script>
 </head>
 <body>
     <div id="app">
@@ -43,30 +43,8 @@
             </div>
         </div>
     </section>
-
-   
-
     <!-- Doctor Cards -->
     <section id="doctors" class="section">
-
-    <!-- Search bar-->
-    <section>
-        <div class="search-container">
-            <h2 class="center-align">Search for Doctors</h2>
-            <input type="text" placeholder="Search for doctors..." v-model="searchTerm">
-            <div class="searched-doctors">
-                <ul>
-                    <li v-for="doctor in filteredDoctors" :key="doctor['Doctor Name']">
-                        
-                        <p>{{ doctor['Doctor Name'] }}</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="search-error" v-f="searchTerm&&!filteredDoctors().length">
-                <p>No doctors found.</p>
-            </div>
-        </div>
-    </section>
             <h2 class="center-align">Featured Doctors</h2>
             <div class="row">
                 <div class="doctor-cards-container">
