@@ -46,23 +46,33 @@
     </section>
     <!-- Doctor Cards -->
     <section id="doctors" class="section">
-            <h2 class="center-align">Featured Doctors</h2>
-            <div class="row">
-                <div class="doctor-cards-container">
-                    <div class="doctor-card" v-for="doctor in featuredDoctors" :key="doctor['Doctor Name']">
-                        <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
-                        <div class="doctor-details">
-                            <h3 class="doctor-name">{{ doctor['Doctor Name'] }}</h3>
-                            <p class="doctor-specialty">{{ doctor.Specialty }}</p>
-                            <p class="doctor-location"><strong>Location:</strong> {{ doctor.Location }}</p>
-                            <p class="doctor-rating"><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
-                            <button class="view-profile-btn">View Profile</button>
-                        </div>
+        <h2 class="center-align">Featured Doctors</h2>
+        <div class="row">
+            <!-- Search Bar -->
+            <div class="input-field col s12">
+                <input id="search" type="text" v-model="searchTerm" placeholder="Search for doctors by name, specialty, or location">
+            </div>
+        </div>
+        <div class="row">
+            <div class="doctor-cards-container">
+                <div class="doctor-card" v-for="doctor in filteredDoctors" :key="doctor['Doctor Name']">
+                    <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
+                    <div class="doctor-details">
+                        <h3 class="doctor-name">{{ doctor['Doctor Name'] }}</h3>
+                        <p class="doctor-specialty">{{ doctor.Specialty }}</p>
+                        <p class="doctor-location"><strong>Location:</strong> {{ doctor.Location }}</p>
+                        <p class="doctor-rating"><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
+                        <button class="view-profile-btn">View Profile</button>
                     </div>
+                </div>
+                <!-- Message if no doctors match -->
+                <div v-if="filteredDoctors.length === 0" class="center-align">
+                    <p>No doctors match your search criteria.</p>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <!-- Footer -->
     <footer class="page-footer blue">
