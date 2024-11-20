@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedApp.bz</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="nav-wrapper blue">
+        <div class="container">
+            <a href="#" class="brand-logo">MedApp.bz</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Side Nav -->
+    <ul class="sidenav" id="mobile-menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Hero Section -->
+    <section class="hero-section blue lighten-5">
+        <div class="container">
+            <h1 class="center-align">Find the Best Doctors for Your Needs</h1>
+            <p class="center-align">Quickly search and book appointments with top-rated healthcare professionals.</p>
+            <div class="center-align">
+                <a href="#doctors" class="btn blue waves-effect waves-light">Get Started</a>
+            </div>
+        </div>
+    </section>
+    <!-- Search bar-->
+     <section>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for doctors..." @keyup.enter="searchDoctors" />
+            <button id="searchButton" @click="searchDoctors">
+                <i class="fas fa-search"></i> <!-- Add FontAwesome icon or any search icon you like -->
+            </button>
+        </div>
+     </section>
+
+    <!-- Doctor Cards -->
+    <section id="doctors" class="section">
+        <div class="container" id="app">
+            <h2 class="center-align">Featured Doctors</h2>
+            <div class="row">
+                <!-- Doctor Card -->
+                <div class="doctor-cards-container">
+                    <div class="doctor-card" v-for="doctor in featuredDoctors" :key="doctor['Doctor Name']">
+                        <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
+                        <div class="doctor-details">
+                            <h3 class="doctor-name">{{ doctor['Doctor Name'] }}</h3>
+                            <p class="doctor-specialty">{{ doctor.Specialty }}</p>
+                            <p class="doctor-location"><strong>Location:</strong> {{ doctor.Location }}</p>
+                            <p class="doctor-rating"><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
+                            <button class="view-profile-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer blue">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h5 class="white-text">MedApp.bz</h5>
+                    <p class="grey-text text-lighten-4">Connecting you to the healthcare you need.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+[
+    {
+        "Doctor Name": "Dr. Carla Castillo",
+        "Specialty": "General Practitioner",
+        "Rating": 4.5,
+        "Location": "Belize City",
+        "Picture": "img/docs/f001.png"
+    },
+    {
+        "Doctor Name": "Dr. Jose Vasquez",
+        "Specialty": "Cardiologist",
+        "Rating": 3.8,
+        "Location": "Belmopan",
+        "Picture": "img/docs/m001.png"
+    },
+    {
+        "Doctor Name": "Dr. Ingrid Canto",
+        "Specialty": "Pediatrician",
+        "Rating": 4.0,
+        "Location": "San Ignacio",
+        "Picture": "img/docs/f002.png"
+    },
+    {
+        "Doctor Name": "Dr. Manuel Sosa",
+        "Specialty": "Dermatologist",
+        "Rating": 4.3,
+        "Location": "Dangriga",
+        "Picture": "img/docs/m002.png"
+    },
+    {
+        "Doctor Name": "Dr. Laura Guerra",
+        "Specialty": "Neurologist",
+        "Rating": 3.6,
+        "Location": "Orange Walk",
+        "Picture": "img/docs/f003.png"
+    },
+    {
+        "Doctor Name": "Dr. Peter Bradley",
+        "Specialty": "General Practitioner",
+        "Rating": 4.2,
+        "Location": "Corozal",
+        "Picture": "img/docs/m002.png"
+    },
+    {
+        "Doctor Name": "Dr. Sandra Alpuche",
+        "Specialty": "Cardiologist",
+        "Rating": 4.8,
+        "Location": "Belize City",
+        "Picture": "img/docs/f004.png"
+    },
+    {
+        "Doctor Name": "Dr. Mario Rosado",
+        "Specialty": "Pediatrician",
+        "Rating": 4.1,
+        "Location": "San Pedro",
+        "Picture": "img/docs/m004.png"
+    },
+    {
+        "Doctor Name": "Dr. Sofia Lopez",
+        "Specialty": "Dermatologist",
+        "Rating": 3.7,
+        "Location": "Belmopan",
+        "Picture": "img/docs/f005.png"
+    },
+    {
+        "Doctor Name": "Dr. Angel Hernandez",
+        "Specialty": "Neurologist",
+        "Rating": 4.0,
+        "Location": "San Ignacio",
+        "Picture": "img/docs/m005.png"
+    },
+    {
+        "Doctor Name": "Dr. Roberto Marin",
+        "Specialty": "Orthopedic Surgeon",
+        "Rating": 4.5,
+        "Location": "Orange Walk",
+        "Picture": "img/docs/m006.png"
+    },
+    {
+        "Doctor Name": "Dr. Patricia Pineda",
+        "Specialty": "Gynecologist",
+        "Rating": 4.7,
+        "Location": "Dangriga",
+        "Picture": "img/docs/f006.png"
+    },
+    {
+        "Doctor Name": "Dr. Ernesto Aguilar",
+        "Specialty": "ENT Specialist",
+        "Rating": 3.9,
+        "Location": "Belize City",
+        "Picture": "img/docs/m007.png"
+    },
+    {
+        "Doctor Name": "Dr. Angela Mahler",
+        "Specialty": "Orthopedic Surgeon",
+        "Rating": 4.2,
+        "Location": "Corozal",
+        "Picture": "img/docs/f007.png"
+    },
+    {
+        "Doctor Name": "Dr. Julio Choc",
+        "Specialty": "Gynecologist",
+        "Rating": 4.1,
+        "Location": "San Pedro",
+        "Picture": "img/docs/m009.png"
+    },
+    {
+        "Doctor Name": "Dr. Luis Zetina",
+        "Specialty": "ENT Specialist",
+        "Rating": 3.6,
+        "Location": "Belmopan",
+        "Picture": "img/docs/m009.png"
+    },
+    {
+        "Doctor Name": "Dr. David Martinez",
+        "Specialty": "Oncologist",
+        "Rating": 4.4,
+        "Location": "Belize City",
+        "Picture": "img/docs/m010.png"
+    },
+    {
+        "Doctor Name": "Dr. Carmen Reyes",
+        "Specialty": "Psychiatrist",
+        "Rating": 4.3,
+        "Location": "San Ignacio",
+        "Picture": "img/docs/f001.png"
+    },
+    {
+        "Doctor Name": "Dr. Nidia Guzman",
+        "Specialty": "Oncologist",
+        "Rating": 4.0,
+        "Location": "Orange Walk",
+        "Picture": "img/docs/f002.png"
+    },
+    {
+        "Doctor Name": "Dr. Juan Perez",
+        "Specialty": "Psychiatrist",
+        "Rating": 4.6,
+        "Location": "Dangriga",
+        "Picture": "img/docs/m001.png"
+    }
+]

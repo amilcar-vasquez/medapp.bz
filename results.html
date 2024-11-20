@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Doctor Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MedApp</div>
+            <input type="text" id="searchInput" placeholder="Search for doctors..." oninput="searchDoctors()">
+        </nav>
+    </header>
+
+    <div id="app">
+        <div class="doctor-cards-container">
+            <div class="doctor-card" v-for="doctor in filteredDoctors" :key="doctor['Doctor Name']">
+                <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
+                <div class="doctor-details">
+                    <h3 class="doctor-name">{{ doctor['Doctor Name'] }}</h3>
+                    <p class="doctor-specialty">{{ doctor.Specialty }}</p>
+                    <p class="doctor-location"><strong>Location:</strong> {{ doctor.Location }}</p>
+                    <a href="doctor-profile.html" class="view-profile-btn">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* Custom Styles for MedApp.bz */
+
+/* Hero Section */
+.hero-section {
+    padding: 50px 0;
+    background-color: #E6EEF7;
+}
+
+.hero-section h1 {
+    color: #007BFF;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-section a {
+    background-color: #00D4FF;
+}
+
+/* Container to hold the doctor cards */
+.doctor-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 16px; /* Space between cards */
+    padding: 16px;
+}
+
+/* Individual doctor card styling */
+.doctor-card {
+    display: flex;
+    align-items: center;
+    background-color: #E6EEF7;
+    border: 1px solid #007BFF;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.doctor-card:hover {
+    transform: scale(1.02);
+}
+
+.doctor-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 16px;
+    object-fit: cover;
+    border: 2px solid #00D4FF;
+}
+
+.doctor-details {
+    flex: 1;
+}
+
+.doctor-name {
+    font-size: 1.5em;
+    margin: 0 0 8px;
+    color: #007BFF;
+}
+
+.doctor-specialty {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0 0 4px;
+}
+
+.doctor-location,
+.doctor-rating {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.view-profile-btn {
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.view-profile-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
