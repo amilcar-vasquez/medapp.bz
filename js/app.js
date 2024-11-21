@@ -65,5 +65,10 @@ new Vue({
         performSearch() {
             this.searchPerformed = true; // Indicate a search was performed
         }
+    },
+    mounted() {
+        // Initialize Materialize Select
+        M.FormSelect.init(document.querySelectorAll('select'));
+        M.Sidenav.init(document.querySelectorAll('.sidenav'));      
     }
 });

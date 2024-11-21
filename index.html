@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedApp.bz</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
-    <script src="app.js"type="module" defer></script>
+    <link href="css/materialize.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/app.js"type="module" defer></script>
+    <script src="js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -48,20 +50,20 @@
     <section id="doctors" class="section">
         <h2 class="center-align">Find Doctors</h2>
         <div class="row">
-            <!-- Search Bar with Icons -->
+            <!-- Search Bar with Styled Icons -->
             <div class="input-field col s12 search-bar">
-                <i class="material-icons prefix" @click="performSearch">search</i>
+                <i class="material-icons prefix blue-text" @click="performSearch">search</i>
                 <input 
                     id="search" 
                     type="text" 
                     v-model="searchTerm" 
                     @input="searchPerformed = true"
-                    placeholder="Search for doctors by name, specialty, or location">
-                <i class="material-icons suffix" @click="toggleAdvancedFilter">filter_list</i>
+                    placeholder="Search by name, specialty, or location">
+                <i class="material-icons suffix blue-text" @click="toggleAdvancedFilter">filter_list</i>
             </div>
         </div>
         <!-- Advanced Filter Section -->
-        <div v-if="showAdvancedFilter" class="advanced-filter-section">
+        <div v-if="showAdvancedFilter" class="advanced-filter-section z-depth-1">
             <h5>Advanced Filters</h5>
             <div class="row">
                 <!-- Location Filter -->
@@ -81,8 +83,14 @@
                     <label>Filter by Specialty</label>
                 </div>
             </div>
-            <button class="btn blue waves-effect waves-light" @click="applyFilters">Apply Filters</button>
-            <button class="btn grey waves-effect waves-light" @click="clearFilters">Clear Filters</button>
+            <div class="center-align">
+                <button class="btn blue waves-effect waves-light" @click="applyFilters">
+                    <i class="material-icons left">check_circle</i>Apply Filters
+                </button>
+                <button class="btn grey waves-effect waves-light" @click="clearFilters">
+                    <i class="material-icons left">clear</i>Clear Filters
+                </button>
+            </div>
         </div>
     
         <div class="row">
