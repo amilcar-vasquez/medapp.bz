@@ -21,37 +21,40 @@ new Vue({
     },
     computed: {
         filteredDoctors() {
-            // Apply search term and filter options
             const term = this.searchTerm.toLowerCase();
             return this.doctors.filter((doctor) => {
                 const matchesSearch = 
                     doctor["Doctor Name"].toLowerCase().includes(term) ||
                     doctor.Specialty.toLowerCase().includes(term) ||
                     doctor.Location.toLowerCase().includes(term);
-
-                const matchesLocation = this.filterOptions.location 
+    
+                // If "All" is selected, skip location filter
+                const matchesLocation = this.filterOptions.location && this.filterOptions.location !== "All" 
                     ? doctor.Location === this.filterOptions.location 
                     : true;
-
+    
                 const matchesSpecialty = this.filterOptions.specialty 
                     ? doctor.Specialty === this.filterOptions.specialty 
                     : true;
-
+    
                 return matchesSearch && matchesLocation && matchesSpecialty;
             });
         },
         uniqueLocations() {
-            // Extract unique locations for the filter
-            return [...new Set(this.doctors.map((doctor) => doctor.Location))];
+            const locations = [...new Set(this.filteredDoctors.map((doctor) => doctor.Location))];
+            // Always return locations including "All"
+            return ['All', ...locations];
         },
         uniqueSpecialties() {
-            // Extract unique specialties for the filter
-            return [...new Set(this.doctors.map((doctor) => doctor.Specialty))];
+            const specialties = [...new Set(this.filteredDoctors.map((doctor) => doctor.Specialty))];
+            console.log('Unique Specialties:', specialties);
+            return ['All', ...specialties]; // Add "All Specialties" to the beginning
         }
     },
     methods: {
         toggleAdvancedFilter() {
             this.showAdvancedFilter = !this.showAdvancedFilter;
+            console.log('Advanced filter toggled:', this.showAdvancedFilter);
         },
         applyFilters() {
             this.searchPerformed = true; // Indicate a search was performed
@@ -64,11 +67,24 @@ new Vue({
         },
         performSearch() {
             this.searchPerformed = true; // Indicate a search was performed
+            console.log('Search performed:', this.searchTerm);
         }
     },
     mounted() {
         // Initialize Materialize Select
-        M.FormSelect.init(document.querySelectorAll('select'));
-        M.Sidenav.init(document.querySelectorAll('.sidenav'));      
+        this.$nextTick(() => {
+            M.FormSelect.init(document.querySelectorAll('select'));
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+        });
+    },
+    watch: {
+        filterOptions: {
+            handler() {
+                this.$nextTick(() => {
+                    M.FormSelect.init(document.querySelectorAll('select'));
+                });
+            },
+            deep: true
+        }
     }
 });

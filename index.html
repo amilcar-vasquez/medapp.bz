@@ -63,13 +63,13 @@
             </div>
         </div>
         <!-- Advanced Filter Section -->
-        <div v-if="showAdvancedFilter" class="advanced-filter-section z-depth-1">
+        <div v-show="showAdvancedFilter" class="advanced-filter-section z-depth-1">
             <h5>Advanced Filters</h5>
             <div class="row">
                 <!-- Location Filter -->
                 <div class="input-field col s6">
                     <select v-model="filterOptions.location">
-                        <option value="" disabled selected>Select Location</option>
+                        <option value="" disabled>Select Location</option>
                         <option v-for="location in uniqueLocations" :key="location" :value="location">{{ location }}</option>
                     </select>
                     <label>Filter by Location</label>
@@ -77,12 +77,12 @@
                 <!-- Specialty Filter -->
                 <div class="input-field col s6">
                     <select v-model="filterOptions.specialty">
-                        <option value="" disabled selected>Select Specialty</option>
+                        <option value="" disabled>Select Specialty</option>
                         <option v-for="specialty in uniqueSpecialties" :key="specialty" :value="specialty">{{ specialty }}</option>
                     </select>
                     <label>Filter by Specialty</label>
                 </div>
-            </div>
+            </div>            
             <div class="center-align">
                 <button class="btn blue waves-effect waves-light" @click="applyFilters">
                     <i class="material-icons left">check_circle</i>Apply Filters
