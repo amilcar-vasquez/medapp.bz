@@ -11,6 +11,12 @@ body {
     color: #333;
 }
 
+.logo img{
+    width: 66px;
+    margin-right: 16px;
+    object-fit: cover;
+}
+
 /* Hero Section */
 .hero-section {
     padding: 50px 0;
