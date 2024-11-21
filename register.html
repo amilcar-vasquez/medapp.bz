@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply as a Doctor - MedApp.bz</title>
+    <link href="css/materialize.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/app.js" type="module" defer></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Styling the Apply section to match Hero section style */
+        .apply-section {
+            background-color: #e3f2fd;
+            padding: 50px 0;
+        }
+
+        .apply-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        /* Two-column layout for the form */
+        .form-column {
+            padding: 10px;
+        }
+
+        @media (min-width: 992px) {
+            .form-container {
+                display: flex;
+                justify-content: space-between;
+                gap: 30px;
+            }
+
+            .form-column {
+                flex: 1;
+            }
+
+            .form-column input, 
+            .form-column textarea,
+            .form-column select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Bar -->
+        <nav class="nav-wrapper blue">
+            <div class="container">
+                <span class="logo"><a href="index.html"><img src="img/MedAppLogo.png" alt="MedApp.bz Logo"></a></span>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#apply" class="btn custom-teal-btn waves-effect waves-light"><b>Apply as Professional</b></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Apply as Doctor Section -->
+        <section id="apply" class="apply-section">
+            <div class="container">
+                <h2 class="center-align apply-title">Apply to be Listed as a Doctor</h2>
+                <div class="row">
+                    <form class="col s12" @submit.prevent="submitForm">
+                        <div class="form-container">
+                            <!-- Left Column -->
+                            <div class="form-column">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="doctor-name" type="text" v-model="formData.doctorName" required>
+                                        <label for="doctor-name">Full Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" v-model="formData.email" required>
+                                        <label for="email">Email Address</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="phone" type="tel" v-model="formData.phone" required>
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="doctor-location" type="text" v-model="formData.location" required>
+                                        <label for="doctor-location">Location</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="form-column">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="specialty" type="text" v-model="formData.specialty" required>
+                                        <label for="specialty">Specialty</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="experience" type="text" v-model="formData.experience" required>
+                                        <label for="experience">Years of Experience</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="biography" class="materialize-textarea" v-model="formData.biography" required></textarea>
+                                        <label for="biography">Short Biography</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="file-field input-field col s12">
+                                        <div class="btn blue waves-effect waves-light">
+                                            <span>Upload Picture</span>
+                                            <input type="file" @change="handleImageUpload">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload a profile picture">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <button class="btn blue waves-effect waves-light" type="submit">Submit Application</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="page-footer blue">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h5 class="white-text">MedApp.bz</h5>
+                        <p class="grey-text text-lighten-4">Connecting you to the healthcare you need.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

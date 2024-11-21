@@ -8,6 +8,16 @@ new Vue({
         filterOptions: {
             location: "", // Selected location filter
             specialty: "" // Selected specialty filter
+        },
+        formData: {
+            doctorName: '',
+            email: '',
+            phone: '',
+            location: '',
+            specialty: '',
+            experience: '',
+            biography: '',
+            picture: null,
         }
     },
     created() {
@@ -68,6 +78,15 @@ new Vue({
         performSearch() {
             this.searchPerformed = true; // Indicate a search was performed
             console.log('Search performed:', this.searchTerm);
+        },
+        handleImageUpload(event) {
+            this.formData.picture = event.target.files[0];
+        },
+        submitForm() {
+            // Example of form submission logic
+            console.log('Form Submitted', this.formData);
+            // Add AJAX request to submit form data to the server or API here
+            alert('Your application has been submitted!');
         }
     },
     mounted() {
