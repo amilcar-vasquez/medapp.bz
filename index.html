@@ -36,18 +36,16 @@
 
     <!-- Hero Section -->
     <section class="hero-section blue lighten-5">
-        <div class="container">
-            <h1 class="center-align">Find the Best Doctors for Your Needs</h1>
-            <p class="center-align">Quickly search and book appointments with top-rated healthcare professionals.</p>
-            <div class="center-align">
-                <a href="#doctors" class="btn blue waves-effect waves-light">Get Started</a>
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="img/belizeanDoctor.png" alt="Doctor Portrait" class="responsive-img">
+            </div>
+            <div class="hero-text">
+                <h1 class="blue-text">MedApp.bz</h1>
+                <p>Quickly search and book top-rated healthcare professionals.</p>
             </div>
         </div>
-    </section>
-    <!-- Doctor Cards -->
-    <section id="doctors" class="section">
-        <h2 class="center-align">Find Doctors</h2>
-        <div class="row">
+        <div class="search-bar-container">
             <!-- Search Bar with Styled Icons -->
             <div class="input-field col s12 search-bar">
                 <i class="material-icons prefix blue-text" @click="performSearch">search</i>
@@ -90,6 +88,11 @@
                 </button>
             </div>
         </div>
+    </section>
+
+    <!-- Doctor Cards -->
+    <section id="doctors" class="section">
+        
     
         <div class="row">
             <div class="doctor-cards-container" v-if="searchPerformed">
@@ -113,21 +116,79 @@
                     <p>No doctors match your search criteria.</p>
                 </div>
             </div>
-            <div class="center-align" v-else>
-                <p>Please type in the search bar to find doctors.</p>
+        </div>
+    </section>
+     <!-- Featured Doctors Section -->
+     <section class="featured-doctors-section blue lighten-5">
+        <div class="container">
+            <h3 class="center-align blue-text text-darken-3">Featured Doctors</h3>
+            <div class="row">
+                <div class="col s12 m4" v-for="doctor in featuredDoctors">
+                    <div class="card">
+                        <div class="card-image">
+                            <img :src="doctor.Picture" :alt="doctor.Name">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ doctor.Name }}</span>
+                            <p><strong>Specialty:</strong> {{ doctor.Specialty }}</p>
+                            <p><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
+                        </div>
+                        <div class="card-action">
+                            <a :href="'profile.html?doctorId=' + doctor.id" class="blue-text">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-section blue darken-3 white-text">
+        <div class="container">
+            <h3 class="center-align">What Our Users Say</h3>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <p>"This platform made finding the right doctor so easy. Highly recommended!"</p>
+                    <h5>- John D.</h5>
+                </div>
+                <div class="carousel-item">
+                    <p>"I booked an appointment within minutes. Excellent user experience!"</p>
+                    <h5>- Sarah T.</h5>
+                </div>
+                <div class="carousel-item">
+                    <p>"Great service! It helped me find a specialist in my area quickly."</p>
+                    <h5>- Michael J.</h5>
+                </div>
             </div>
         </div>
     </section>    
     <!-- Footer -->
-    <footer class="page-footer blue">
+    <footer class="page-footer blue darken-3">
         <div class="container">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m6">
                     <h5 class="white-text">MedApp.bz</h5>
-                    <p class="grey-text text-lighten-4">Connecting you to the healthcare you need.</p>
+                    <p class="grey-text text-lighten-4">Your trusted platform for finding and connecting with top healthcare providers.</p>
+                </div>
+                <div class="col s12 m4 offset-m2">
+                    <h5 class="white-text">Quick Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="register.html">Register as Professional</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2024 MedApp.bz, All Rights Reserved.
+                <a class="grey-text text-lighten-4 right" href="https://amilcar.me" target="_blank">Who we are</a>
+            </div>
+        </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elems = document.querySelectorAll('.carousel');
+            M.Carousel.init(elems, { fullWidth: true, indicators: true });
+        });
+    </script>
 </body>
 </html>

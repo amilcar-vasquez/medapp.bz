@@ -18,7 +18,7 @@ new Vue({
             experience: '',
             biography: '',
             picture: null,
-        }
+        },
     },
     created() {
         // Fetch doctor data
@@ -49,6 +49,12 @@ new Vue({
     
                 return matchesSearch && matchesLocation && matchesSpecialty;
             });
+        },
+        //featured doctors function that returns the first 3 doctors with the highest ratings
+        featuredDoctors() {
+            return this.doctors
+                .sort((a, b) => b.Rating - a.Rating)
+                .slice(0, 3);
         },
         uniqueLocations() {
             const locations = [...new Set(this.filteredDoctors.map((doctor) => doctor.Location))];
@@ -88,10 +94,7 @@ new Vue({
             // Add AJAX request to submit form data to the server or API here
             window.location.href = 'thank-you.html';
         },
-        viewProfile(doctorId) {
-            // Redirect to profile page with doctor ID as a query parameter
-            window.location.href = `profile.html?doctorId=${doctorId}`;
-        },
+        
     },
     mounted() {
         // Initialize Materialize Select

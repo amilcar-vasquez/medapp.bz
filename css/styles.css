@@ -10,34 +10,49 @@ body {
     line-height: 1.5;
     color: #333;
 }
+nav{
+    height:fit-content;
+    vertical-align: middle;
+}
 
 .logo img{
-    width: 66px;
+    vertical-align: middle;
+    width: 100px;
+    padding: 0 20px;
     margin-right: 16px;
-    object-fit: cover;
 }
 
-/* Hero Section */
 .hero-section {
-    padding: 50px 0;
-    background-color: #E6EEF7;
+    position: relative;
+    padding: 50px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.hero-section h1 {
-    color: #007BFF;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
 }
 
-.hero-section p {
-    color: #333;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.hero-image img {
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
 }
 
-.hero-section a {
-    background-color: #00D4FF;
+.hero-text {
+    max-width: 500px;
+    text-align: left;
 }
+
+
 
 /* Container to hold the doctor cards */
 .doctor-cards-container {
@@ -121,12 +136,19 @@ input[type="text"] {
 }
 
 /* Search Bar Section */
-.search-bar {
-    position: relative;
-    margin: 20px;
-    align-self:auto;
-    max-width: 90%;
+.search-bar-container {
+    width: 100%;
 }
+
+.search-bar {
+    background: #E6EEF7;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    border: 1px solid #007BFF;
+   
+}
+
 
 .search-bar .material-icons.prefix {
     position: absolute;
@@ -145,17 +167,21 @@ input[type="text"] {
 }
 
 .search-bar input[type="text"] {
-    width: 100%;
+    width: 85%;
     padding: 10px 40px;
     font-size: 1rem;
-    border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s ease;
+    align-self: center;
 }
 
 .search-bar input[type="text"]:focus {
     border-color: #007BFF;
     outline: none;
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #686868;
 }
 
 /* Advanced Filter Section */
