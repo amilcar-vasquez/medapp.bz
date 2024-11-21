@@ -86,8 +86,12 @@ new Vue({
             // Example of form submission logic
             console.log('Form Submitted', this.formData);
             // Add AJAX request to submit form data to the server or API here
-            alert('Your application has been submitted!');
-        }
+            window.location.href = 'thank-you.html';
+        },
+        viewProfile(doctorId) {
+            // Redirect to profile page with doctor ID as a query parameter
+            window.location.href = `profile.html?doctorId=${doctorId}`;
+        },
     },
     mounted() {
         // Initialize Materialize Select

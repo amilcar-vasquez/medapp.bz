@@ -104,7 +104,9 @@
                         <p class="doctor-specialty">{{ doctor.Specialty }}</p>
                         <p class="doctor-location"><strong>Location:</strong> {{ doctor.Location }}</p>
                         <p class="doctor-rating"><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
-                        <button class="view-profile-btn">View Profile</button>
+                        <button class="view-profile-btn">
+                            <a :href="'profile.html?doctorId=' + doctor.id">View Profile</a>
+                        </button>
                     </div>
                 </div>
                 <div v-if="filteredDoctors.length === 0" class="center-align">

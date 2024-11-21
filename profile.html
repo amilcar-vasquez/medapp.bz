@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile - MedApp.bz</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="nav-wrapper blue">
+        <div class="container">
+            <span class="logo"><a href="index.html"><img src="img/MedAppLogo.png"/></a></span>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html" class="btn custom-teal-btn waves-effect waves-light"><b>Apply as Professional</b></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="app">
+        <!-- Profile Section -->
+        <section class="doctor-profile-section">
+            <div class="container">
+                <!-- Doctor Found -->
+                <div v-if="doctor" class="card hoverable">
+                    <div class="card-content">
+                        <div class="row">
+                            <!-- Doctor Picture -->
+                            <div class="col s12 m4">
+                                <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="responsive-img circle z-depth-2">
+                            </div>
+                            <!-- Doctor Details -->
+                            <div class="col s12 m8">
+                                <h3 class="blue-text text-darken-3">{{ doctor['Doctor Name'] }}</h3>
+                                <p class="grey-text text-darken-1"><strong>Specialty:</strong> {{ doctor.Specialty }}</p>
+                                <p class="grey-text text-darken-1"><strong>Location:</strong> {{ doctor.Location }}</p>
+                                <p class="amber-text text-darken-1"><strong>Rating:</strong> {{ doctor.Rating }} ⭐</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Doctor Biography -->
+                    <div class="card-action blue lighten-5">
+                        <h5>Biography</h5>
+                        <p>{{ doctor.Bio }}</p>
+                    </div>
+                </div>
+
+                <!-- Doctor Not Found -->
+                <div v-else class="card-panel red lighten-4 center-align">
+                    <p class="red-text"><strong>Doctor profile not found.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section blue lighten-5">
+            <div class="container">
+                <h4 class="center-align blue-text text-darken-3">User Reviews</h4>
+                <ul class="collection">
+                    <!-- Dummy Reviews -->
+                    <li class="collection-item avatar" v-for="review in reviews" :key="review.id">
+                        <i class="material-icons circle blue">person</i>
+                        <span class="title"><strong>{{ review.user }}</strong></span>
+                        <p>
+                            <i class="material-icons amber-text tiny">star</i> {{ review.rating }}<br>
+                            {{ review.text }}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer blue darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h5 class="white-text">MedApp.bz</h5>
+                    <p class="grey-text text-lighten-4">Your trusted platform for finding and connecting with top healthcare providers.</p>
+                </div>
+                <div class="col s12 m4 offset-m2">
+                    <h5 class="white-text">Quick Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="search.html">Search Doctors</a></li>
+                        <li><a class="grey-text text-lighten-3" href="about.html">About Us</a></li>
+                        <li><a class="grey-text text-lighten-3" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2024 MedApp.bz, All Rights Reserved.
+                <a class="grey-text text-lighten-4 right" href="terms.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vue.js Logic -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                doctor: null, // Store the selected doctor's data
+                reviews: [
+                    { id: 1, user: "John Doe", rating: 4.5, text: "Great doctor! Very attentive and professional." },
+                    { id: 2, user: "Jane Smith", rating: 5.0, text: "Excellent experience. I felt very well cared for." },
+                    { id: 3, user: "Michael Johnson", rating: 4.0, text: "Good overall. Could improve waiting time." }
+                ]
+            },
+            created() {
+                // Extract the doctor ID from the URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const doctorId = urlParams.get('doctorId');
+
+                // Fetch doctor data
+                fetch("doctors.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Find the doctor with the matching ID
+                        this.doctor = data.find(doctor => doctor.id == doctorId);
+                    })
+                    .catch((error) => console.error("Error fetching doctor data:", error));
+            }
+        });
+    </script>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
