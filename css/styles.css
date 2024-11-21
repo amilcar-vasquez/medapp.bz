@@ -193,4 +193,11 @@ input[type="text"] {
     outline: none;
 }
 
-
+.custom-teal-btn {
+    background-color: #00D4FF; /* Set background color */
+    color: rgb(80, 80, 80); /* Set text color to white for contrast */
+    font-size: 1.1rem; /* Set font size */
+}
+.custom-teal-btn:hover {
+        background-color: #ffffff; /* Change background color on hover */
+    }
