@@ -46,16 +46,52 @@
     </section>
     <!-- Doctor Cards -->
     <section id="doctors" class="section">
-        <h2 class="center-align">Featured Doctors</h2>
+        <h2 class="center-align">Find Doctors</h2>
         <div class="row">
-            <!-- Search Bar -->
-            <div class="input-field col s12">
-                <input id="search" type="text" v-model="searchTerm" placeholder="Search for doctors by name, specialty, or location">
+            <!-- Search Bar with Icons -->
+            <div class="input-field col s12 search-bar">
+                <i class="material-icons prefix" @click="performSearch">search</i>
+                <input 
+                    id="search" 
+                    type="text" 
+                    v-model="searchTerm" 
+                    @input="searchPerformed = true"
+                    placeholder="Search for doctors by name, specialty, or location">
+                <i class="material-icons suffix" @click="toggleAdvancedFilter">filter_list</i>
             </div>
         </div>
+        <!-- Advanced Filter Section -->
+        <div v-if="showAdvancedFilter" class="advanced-filter-section">
+            <h5>Advanced Filters</h5>
+            <div class="row">
+                <!-- Location Filter -->
+                <div class="input-field col s6">
+                    <select v-model="filterOptions.location">
+                        <option value="" disabled selected>Select Location</option>
+                        <option v-for="location in uniqueLocations" :key="location" :value="location">{{ location }}</option>
+                    </select>
+                    <label>Filter by Location</label>
+                </div>
+                <!-- Specialty Filter -->
+                <div class="input-field col s6">
+                    <select v-model="filterOptions.specialty">
+                        <option value="" disabled selected>Select Specialty</option>
+                        <option v-for="specialty in uniqueSpecialties" :key="specialty" :value="specialty">{{ specialty }}</option>
+                    </select>
+                    <label>Filter by Specialty</label>
+                </div>
+            </div>
+            <button class="btn blue waves-effect waves-light" @click="applyFilters">Apply Filters</button>
+            <button class="btn grey waves-effect waves-light" @click="clearFilters">Clear Filters</button>
+        </div>
+    
         <div class="row">
-            <div class="doctor-cards-container">
-                <div class="doctor-card" v-for="doctor in filteredDoctors" :key="doctor['Doctor Name']">
+            <div class="doctor-cards-container" v-if="searchPerformed">
+                <!-- Show doctor cards if there are search results -->
+                <div 
+                    class="doctor-card" 
+                    v-for="doctor in filteredDoctors" 
+                    :key="doctor['Doctor Name']">
                     <img :src="doctor.Picture" :alt="doctor['Doctor Name']" class="doctor-image">
                     <div class="doctor-details">
                         <h3 class="doctor-name">{{ doctor['Doctor Name'] }}</h3>
@@ -65,15 +101,15 @@
                         <button class="view-profile-btn">View Profile</button>
                     </div>
                 </div>
-                <!-- Message if no doctors match -->
                 <div v-if="filteredDoctors.length === 0" class="center-align">
                     <p>No doctors match your search criteria.</p>
                 </div>
             </div>
+            <div class="center-align" v-else>
+                <p>Please type in the search bar to find doctors.</p>
+            </div>
         </div>
-    </section>
-    
-
+    </section>    
     <!-- Footer -->
     <footer class="page-footer blue">
         <div class="container">

@@ -102,3 +102,22 @@ input[type="text"] {
     border-radius: 5px;
     margin-left: 10px;
 }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+.search-bar .prefix {
+    cursor: pointer;
+    margin-right: 10px;
+}
+.search-bar .suffix {
+    cursor: pointer;
+    margin-left: 10px;
+}
+.advanced-filter-section {
+    margin-top: 20px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+}

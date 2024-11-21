@@ -1,11 +1,17 @@
 new Vue({
     el: "#app",
     data: {
-        doctors: [], // This will hold the doctor data
-        searchTerm: "" // User input for search
+        doctors: [], // All doctors
+        searchTerm: "", // User input for search
+        searchPerformed: false, // Tracks if a search was performed
+        showAdvancedFilter: false, // Toggles advanced filter section
+        filterOptions: {
+            location: "", // Selected location filter
+            specialty: "" // Selected specialty filter
+        }
     },
     created() {
-        // Simulate fetching data from doctors.json
+        // Fetch doctor data
         fetch("doctors.json")
             .then((response) => response.json())
             .then((data) => {
@@ -14,19 +20,50 @@ new Vue({
             .catch((error) => console.error("Error fetching doctor data:", error));
     },
     computed: {
-        featuredDoctors() {
-            // Only show 4 doctors on the home page
-            return this.doctors.slice(0, 4);
-        },
         filteredDoctors() {
-            // Filter doctors based on the search term
+            // Apply search term and filter options
             const term = this.searchTerm.toLowerCase();
-            return this.doctors.filter(doctor =>
-                doctor["Doctor Name"].toLowerCase().includes(term) ||
-                doctor.Specialty.toLowerCase().includes(term) ||
-                doctor.Location.toLowerCase().includes(term)
-            );
+            return this.doctors.filter((doctor) => {
+                const matchesSearch = 
+                    doctor["Doctor Name"].toLowerCase().includes(term) ||
+                    doctor.Specialty.toLowerCase().includes(term) ||
+                    doctor.Location.toLowerCase().includes(term);
+
+                const matchesLocation = this.filterOptions.location 
+                    ? doctor.Location === this.filterOptions.location 
+                    : true;
+
+                const matchesSpecialty = this.filterOptions.specialty 
+                    ? doctor.Specialty === this.filterOptions.specialty 
+                    : true;
+
+                return matchesSearch && matchesLocation && matchesSpecialty;
+            });
+        },
+        uniqueLocations() {
+            // Extract unique locations for the filter
+            return [...new Set(this.doctors.map((doctor) => doctor.Location))];
+        },
+        uniqueSpecialties() {
+            // Extract unique specialties for the filter
+            return [...new Set(this.doctors.map((doctor) => doctor.Specialty))];
+        }
+    },
+    methods: {
+        toggleAdvancedFilter() {
+            this.showAdvancedFilter = !this.showAdvancedFilter;
+        },
+        applyFilters() {
+            this.searchPerformed = true; // Indicate a search was performed
+        },
+        clearFilters() {
+            // Reset filter options and hide advanced filters
+            this.filterOptions.location = "";
+            this.filterOptions.specialty = "";
+            this.showAdvancedFilter = false;
+        },
+        performSearch() {
+            this.searchPerformed = true; // Indicate a search was performed
         }
     }
 });
-
