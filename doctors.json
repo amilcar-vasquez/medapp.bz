@@ -59,7 +59,7 @@
         "Specialty": "Cardiologist",
         "Rating": 4.6,
         "Location": "Belize City",
-        "Picture": "img/docs/f007.png",
+        "Picture": "img/docs/featuredFemale001.png",
         "Bio": "Dr. Sofia Ramirez is an expert in cardiovascular health, with a passion for preventing and managing heart disease. She employs state-of-the-art diagnostic tools and personalized care to help patients achieve optimal heart health."
     },
     {
@@ -104,7 +104,7 @@
         "Specialty": "Gynecologist",
         "Rating": 4.7,
         "Location": "Dangriga",
-        "Picture": "img/docs/m010.png",
+        "Picture": "img/docs/featuredMale001.png",
         "Bio": "Dr. Pedro Ruiz is a gynecologist with years of experience in women’s health. His practice focuses on preventive gynecological care, family planning, menopause management, and the treatment of reproductive health issues."
     },
     {
@@ -176,7 +176,7 @@
         "Specialty": "Psychiatrist",
         "Rating": 4.6,
         "Location": "Dangriga",
-        "Picture": "img/docs/m004.png",
+        "Picture": "img/docs/featuredMale002.png",
         "Bio": "Dr. Victor Perez is a psychiatrist who specializes in mental health conditions, including depression, anxiety, and stress management. His goal is to help patients lead healthier, more fulfilling lives through tailored therapy."
     }
 ]
